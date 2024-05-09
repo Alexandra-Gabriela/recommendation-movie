@@ -1,13 +1,16 @@
 import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import HomeScreen from './Screens/HomeScreen'
+import Movies from './Screens/Movies'
+import NotFound from './Screens/NotFound'
 
 function App() {
   return (
-    <div className='h-header bg-main w-full'>
-
-    <h1 class="text-h1 text-star font-bold underline">
-    Hello world!
-  </h1>
-  </div>
+    <Routes>
+      <Route path="/HomeScreen" element={<HomeScreen />} />
+      <Route path="/Movies" element={<Movies />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   )
 }
 
