@@ -1,8 +1,11 @@
 import React from 'react'
-import { FaSearch } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { FaSearch, FaUser } from "react-icons/fa";
+import { Link, NavLink } from 'react-router-dom';
+import {CgUser} from 'react-icons/cg'
 
 function NavBar() {
+    const hover="hover:text-subMain transitions text-white";
+    const Hover= ({isActive}) => (isActive? 'text-subMain': hover);
 return (
     <>
     <div className="bg-main shadow-md sticky top-0 z-20">
@@ -20,10 +23,19 @@ return (
                 {/* icon luat de la : https://react-icons.github.io/react-icons/search/#q=search */}
                     <FaSearch/>
                     </button>
+                    <input type="text" placeholder="Search movie name from here"
+                    className="font-medium placeholder:text-border text-sm w-11/12 h12 bg-transparent border-none px-2 text-black">
+                    </input>
                 </form>
             </div>
             {/* menu */}
+            <div className="col-span-3 font-medium text-sm hidden xl:gap-14 2xl:gap-20 justify-between lg:flex xl:justify-end items-center">
+                <NavLink to="/movies" className={Hover}>Movies</NavLink>
+                <NavLink to="/login" className={Hover}>
+                <CgUser className="w-8 h-8"/>
+                </NavLink>
 
+            </div>
         </div>
     </div>
     
