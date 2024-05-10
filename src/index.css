@@ -123,7 +123,149 @@ body {
       transform: rotate(360deg);
   }
 }
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
 
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: moveGradient 1s linear infinite;
+}
+.change:after {
+  content: "";
+  animation-delay: 3s;
+  animation: changeText 4s infinite linear;
+}
+
+@keyframes changeText {
+  6% {
+    content: "H";
+  }
+
+  12% {
+    content: "He";
+  }
+
+  18% {
+    content: "Hel";
+  }
+
+  24% {
+    content: "Hell";
+  }
+
+  30% {
+    content: "Hello";
+  }
+
+  36% {
+    content: "Hello,";
+  }
+
+  42% {
+    content: "Hello, ";
+  }
+
+  48% {
+    content: "Hello, d";
+  }
+
+  54% {
+    content: "Hello, de";
+  }
+
+  60% {
+    content: "Hello, dea";
+  }
+
+  66% {
+    content: "Hello, dear";
+  }
+
+  72% {
+    content: "Hello, dear!";
+  }
+
+  78% {
+    content: "Hello, dea";
+  }
+
+  84% {
+    content: "Hello";
+  }
+
+  90% {
+    content: "Hel";
+  }
+
+  100% {
+    content: "";
+  }
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #dfb79e;
+  left: 15%;
+  transform-origin: 50%;
+  animation: circle 0.8s alternate infinite ease;
+}
+
+@keyframes circle {
+  0% {
+    top: 250px;
+    border-radius: 50px 50px 25px 25px;
+    transform: scaleX(1.7);
+    height: 5px;
+  }
+
+  40% {
+    height: 20px;
+    border-radius: 50%;
+    transform: scaleX(1);
+  }
+
+  100% {
+    top: 0%;
+  }
+}
+
+.shadow {
+  width: 20px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: rgba(220, 91, 81, 0.5);
+  position: absolute;
+  top: 252px;
+  transform-origin: 50%;
+  left: 15%;
+  filter: blur(1px);
+  animation: shadow 0.8s alternate infinite ease;
+}
+
+@keyframes shadow {
+  0% {
+    transform: scaleX(1.5);
+  }
+
+  40% {
+    transform: scaleX(1);
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 0.4;
+    transform: scaleX(0.2);
+  }
+}
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus

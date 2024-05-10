@@ -1,8 +1,11 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import avatar from "../assets/icons/avatar.png";
 import { AuthContext } from "../context/AuthContext";
 import Switch from "./Switch";
+
+const hover="hover:text-subMain transitions text-white";
+const Hover= ({isActive}) => (isActive? 'text-subMain': hover);
 
 const Navbar = () => {
   const { currentUser, logOut } = useContext(AuthContext);
@@ -21,7 +24,9 @@ const Navbar = () => {
 
           {/* Collapsible wrapper */}
           {/* Right elements */}
-          <div className="relative flex items-center">
+          <div className="relative flex items-center ml-auto">
+            <NavLink to="/generate" className={`${Hover} mr-4`}>Generate Movie</NavLink>
+            <NavLink to="/aboutus" className={`${Hover} mr-4`}>About Us</NavLink>
             {currentUser && (
               <h5 className="mr-2 capitalize">{currentUser.displayName}</h5>
             )}

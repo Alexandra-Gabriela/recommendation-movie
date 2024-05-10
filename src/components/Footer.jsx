@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
 return ( 
@@ -13,8 +14,8 @@ return (
         </p>
         </div>
             <ul>
-                <li><a href="#" className="text-gray-600 hover:text-gray-300">Home</a></li>
-                <li><a href="#" className="text-gray-600 hover:text-gray-300">Generate your movie</a></li>
+                <li><Link to="/aboutUs" className="text-gray-600 hover:text-gray-300">About Us</Link></li>
+                <li><Link to="/generate" className="text-gray-600 hover:text-gray-300">Generate movie</Link></li>
             </ul>
             </div>
     {/* Coloana dreaptă pentru About Us și Contact */}

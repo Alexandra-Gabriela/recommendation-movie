@@ -7,6 +7,8 @@ import MovieDetail from "../pages/MovieDetail";
 import Register from "../pages/Register";
 import PrivateRouter from "./PrivateRouter";
 import Footer from "../Components/Footer";
+import GenerateYourMovie from "../pages/GenerateYourMovie";
+import AboutUs from "../pages/AboutUs";
 
 const AppRouter = () => {
   return (
@@ -14,6 +16,8 @@ const AppRouter = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/generate" element={<GenerateYourMovie />} />
+        <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/details/:id" element={<PrivateRouter />}>
