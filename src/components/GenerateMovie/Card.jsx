@@ -3,13 +3,14 @@ import React, { useState } from 'react';
 function Card({ movie, type }) {
     const [overview, setOverview] = useState(true);
     const [cast, setCast] = useState(false);
+
     return (
         <div className="movie-wrapper">
             <div className="title-wrapper">
                 <div>
                     <div className="title">{movie?.title}</div>
                     <div className="info-wrapper">
-                        <div className="year">{movie?.year}</div>
+                        <div className="year">{movie?.releaseYear}</div>
                         {movie?.runtime && (
                             <div className="runtime">
                                 {(movie?.runtime - (movie?.runtime % 60)) / 60}h{" "}
@@ -18,10 +19,7 @@ function Card({ movie, type }) {
                         )}
                     </div>
                 </div>
-                <div
-                    className="poster-header"
-                    style={{ backgroundImage: `url(${movie?.posterURLs?.original})` }}
-                ></div>
+                {/* Poster nu este furnizat în răspunsul API */}
             </div>
             <div className="routes">
                 <div
@@ -30,7 +28,7 @@ function Card({ movie, type }) {
                         setCast(false);
                     }}
                 >
-                    overview
+                    Overview
                 </div>
                 <div
                     onClick={() => {
@@ -38,48 +36,47 @@ function Card({ movie, type }) {
                         setCast(true);
                     }}
                 >
-                    cast
+                    Cast
                 </div>
             </div>
             {overview && (
                 <div>
                     <div className="title">About</div>
                     <div className="rating-wrapper">
-                        {movie?.imdbRating && (
-                            <div className="rating">
-                                {movie?.imdbRating / 10} /10
-                                <div>IMDB</div>
-                            </div>
-                        )}
-                        <div className="line"></div>
-                        {movie?.tmdbRating && (
-                            <div className="rating">
-                                {movie?.tmdbRating / 10} /10
-                                <div>TMDB</div>
-                            </div>
-                        )}
-                    </div>
-                    {type === "series" && (
-                        <div>
-                            <div className="overview">
-                                Number of seasons : {movie?.seasons}
-                            </div>
-                            <div className="overview">
-                                Total episodes : {movie?.episodes}
-                            </div>
+                        <div className="rating">
+                            {movie?.vote_average} / 10
+                            <div>Rating</div>
                         </div>
-                    )}
-                    {movie?.tagline && <div className="tagline">{movie?.tagline}</div>}
+                        <div className="line"></div>
+                        <div className="rating">
+                            {movie?.popularity}
+                            <div>Popularity</div>
+                        </div>
+                    </div>
+                    <div className="tagline">{movie?.tagline}</div>
                     <div className="overview">{movie?.overview}</div>
                 </div>
             )}
             {cast && (
                 <div className="link-wrapper">
-                    {movie?.cast.map((name, index) => (
-                        <div key={index}>
-                            <div className="link">{name}</div>
+                    <div className="cast-details">
+                        <div className="cast-item">
+                            <div className="cast-label">Status:</div>
+                            <div className="cast-value">{movie?.status}</div>
                         </div>
-                    ))}
+                        <div className="cast-item">
+                            <div className="cast-label">Revenue:</div>
+                            <div className="cast-value">{movie?.revenue}</div>
+                        </div>
+                        <div className="cast-item">
+                            <div className="cast-label">Budget:</div>
+                            <div className="cast-value">{movie?.budget}</div>
+                        </div>
+                        <div className="cast-item">
+                            <div className="cast-label">Original Language:</div>
+                            <div className="cast-value">{movie?.original_language}</div>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>
