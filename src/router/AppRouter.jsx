@@ -1,14 +1,18 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Navbar from "../Components/Navbar";
+import Navbar from "../components/Navbar";
 import Login from "../pages/Login";
 import Main from "../pages/Main";
 import MovieDetail from "../pages/MovieDetail";
 import Register from "../pages/Register";
 import PrivateRouter from "./PrivateRouter";
+<<<<<<< HEAD
 import Footer from "../Components/Footer";
 import GenerateYourMovie from "../pages/GenerateYourMovie";
 import AboutUs from "../pages/AboutUs";
+=======
+import Footer from "../components/Footer";
+>>>>>>> 98b547eeb2678ab083f41a4a2271d9134446acd9
 
 const AppRouter = () => {
   return (
