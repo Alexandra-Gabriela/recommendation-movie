@@ -1,8 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import Card from '../Components/GenerateMovie/Card'
-import Loading from '../Components/GenerateMovie/Loading'
+import Card from '../components/GenerateMovie/Card'
+import Loading from '../components/GenerateMovie/Loading'
 
 
 const types = ["movie", "series"];
