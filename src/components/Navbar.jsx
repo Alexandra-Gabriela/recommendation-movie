@@ -14,11 +14,15 @@ const Navbar = () => {
   return (
     <div>
       <nav
-        className="flex w-full flex-wrap items-center justify-between bg-neutral-100 dark:bg-gray-900 py-3 dark:text-neutral-200 shadow-lg lg:flex-wrap lg:justify-start fixed top-0 z-20"
-        data-te-navbar-ref=""
-      >
-        <div className="flex w-full flex-wrap items-center justify-between px-6">
-          <Link className="pr-2 text-2xl font-semibold" to="/">
+          className="flex w-full flex-wrap items-center justify-between py-3 shadow-lg lg:flex-wrap lg:justify-start fixed top-0 z-20"
+          style={{
+            backgroundImage: "linear-gradient(to right, #9b1d20, #662d8c, #e67071)", // Gradient deosebit cu nuanțe de visiniu și mov
+            color: "dark.text-neutral-200"
+          }}
+          data-te-navbar-ref=""
+        >
+        <div className="flex w-full flex-wrap items-center justify-between px-6 font-serif">
+          <Link className="pr-2 text-2xl font-semibold font-family:cursive" to="/">
             MoviePicks
           </Link>
 
