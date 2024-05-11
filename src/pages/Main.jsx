@@ -26,14 +26,14 @@ const Main = () => {
   };
   return (
     <>
-      <form className="flex justify-center p-2" onSubmit={handleSubmit}>
+      <form className="flex justify-center p-2 pad-50" onSubmit={handleSubmit}>
         <input
           type="search"
-          className="w-80 h-8 rounded-md p-1 m-2"
+          className="w-600 h-8 p-1 m-2"
           placeholder="Search a movie..."
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button className="btn-danger-bordered" type="submit">
+        <button className="btn-danger-bordered rounded-full" type="submit">
           Search
         </button>
       </form>

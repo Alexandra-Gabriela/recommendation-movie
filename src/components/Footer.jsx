@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
 return ( 
 
-<footer className="bg-neutral-100 dark:bg-gray-900 text-neutral-200 py-8">
+<footer className="mt-50 bg-neutral-100 dark:bg-gray-900 text-neutral-200 py-10">
     <div className="container mx-auto flex flex-wrap justify-between">
     {/* Coloana stângă pentru linkuri utile */}
         <div className="footer-section mb-4 sm:mb-0 w-full sm:w-auto">

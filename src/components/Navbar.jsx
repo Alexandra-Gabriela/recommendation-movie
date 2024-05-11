@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import avatar from "../assets/icons/avatar.png";
+import moviepicks from "../assets/icons/moviepicks.jpg";
 import { AuthContext } from "../context/AuthContext";
-import Switch from "./Switch";
+import Switch from "./Switch"; 
 
 const hover="hover:text-subMain transitions text-white";
 const Hover= ({isActive}) => (isActive? 'text-subMain': hover);
@@ -22,8 +23,9 @@ const Navbar = () => {
           data-te-navbar-ref=""
         >
         <div className="flex w-full flex-wrap items-center justify-between px-6 font-serif">
+          <img className="h-10 m-2 rounded-full" src={moviepicks}></img>
           <Link className="pr-2 text-2xl font-semibold font-family:cursive" to="/">
-            MoviePicks
+            MoviePicks  
           </Link>
 
           {/* Collapsible wrapper */}

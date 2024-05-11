@@ -8,6 +8,12 @@ module.exports = {
   theme: {
     //! eğer tailwind'in default theme ayarları yerine kendimizinkini eklemek istemiyorsak mutlaka extend objesi içinde eklememiz gerekli yoksa tüm theme objesi değişir ve kendi eklediklerimiz dışındakileri kullanamayız.
     extend: {
+      margin:{ 
+        "50" : "50px"
+      },
+      width:{
+        "600" : "600px"
+      },
       colors: {
         "gray-dark-main": "#23242a",
         "gray-dark-second": "#28292d",
