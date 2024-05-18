@@ -71,9 +71,7 @@ const ActorSearch = () => {
             </form>
             {error && <p className="text-red-500">{error}</p>}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-4">
-                {movies.length === 0 && !loading && !error && (
-                    <p className="text-gray-500">No movies found. Please enter a valid actor name.</p>
-                )}
+                {movies.length === 0 && !loading && !error}
                 {movies.map((movie) => {
                     console.log("Movie data:", movie); // Verify movie data
                     return (

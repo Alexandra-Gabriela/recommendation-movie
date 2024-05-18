@@ -12,12 +12,25 @@ const MovieCard = ({ title, poster_path, overview, vote_average, id }) => {
   const getVoteClass = (vote) => {
     if (vote >= 8) {
       return "green";
-    } else if (vote >= 6) {
+    } else if (vote >= 7) {
       return "orange";
     } else {
       return "red";
     }
+  };  
+  const recommendMovie = (vote_average) => {
+    if (vote_average >= 8) {
+      return "Watch this movie now!";
+    } else if (vote_average <= 6) {
+      return "Avoid this movie at all costs!";
+    } else {
+      return null;
+    }
   };
+
+
+
+
   return (
     <div
       className="movie"
@@ -41,6 +54,9 @@ const MovieCard = ({ title, poster_path, overview, vote_average, id }) => {
       <div className="movie-over">
         <h2>Overview</h2>
         <p>{overview}</p>
+        {recommendMovie(vote_average) && (
+          <p className="text-red-500 border border-black p-2 font-bold bg-black">{recommendMovie(vote_average)}</p>
+        )}
       </div>
     </div>
   );
