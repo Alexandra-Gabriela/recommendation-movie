@@ -31,8 +31,9 @@ const Navbar = () => {
           {/* Collapsible wrapper */}
           {/* Right elements */}
           <div className="relative flex items-center ml-auto">
-            <NavLink to="/generate" className={`${Hover} mr-4`}>Generate Movie</NavLink>
+             <NavLink to="/search" className={`${Hover} mr-4`}>Search by Actor</NavLink>
             <NavLink to="/aboutus" className={`${Hover} mr-4`}>About Us</NavLink>
+           
             {currentUser && (
               <h5 className="mr-2 capitalize">{currentUser.displayName}</h5>
             )}

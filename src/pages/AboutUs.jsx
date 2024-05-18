@@ -1,7 +1,7 @@
 import React from 'react'
 
 const AboutUs = () => {
-return (<div> <br/>             
+return (<div> <br/> <br/> <br/>    
             <div className="container mx-20">
                 <h2 className="text-3xl font-bold mb-4">
                     <span className="text-gray-500">Welcome to </span> 
