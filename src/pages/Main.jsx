@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { MovieContext } from "../context/MovieContext";
 import { toastWarnNotify } from "../helpers/ToastNotify";
-import MovieCard from "../components/MovieCard";
+import MovieCard from "../layout/MovieCard";
 
 const API_KEY = '608f87f5e5fecfdaa32472be606d8755';
 const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=`;

@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import Navbar from "../layout/Navbar";
 import Login from "../pages/Login";
 import Main from "../pages/Main";
 import MovieDetail from "../pages/MovieDetail";
 import Register from "../pages/Register";
 import PrivateRouter from "./PrivateRouter";
 import AboutUs from "../pages/AboutUs";
-import Footer from "../components/Footer";
+import Footer from "../layout/Footer";
 import ActorSearch from "../pages/ActorSearch";
 
 

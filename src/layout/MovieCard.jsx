@@ -12,7 +12,7 @@ const MovieCard = ({ title, poster_path, overview, vote_average, id }) => {
   const getVoteClass = (vote) => {
     if (vote >= 8) {
       return "green";
-    } else if (vote >= 7) {
+    } else if (vote >= 6) {
       return "orange";
     } else {
       return "red";
@@ -21,7 +21,7 @@ const MovieCard = ({ title, poster_path, overview, vote_average, id }) => {
   const recommendMovie = (vote_average) => {
     if (vote_average >= 8) {
       return "Watch this movie now!";
-    } else if (vote_average <= 6) {
+    } else if (vote_average <= 5) {
       return "Avoid this movie at all costs!";
     } else {
       return null;
@@ -55,7 +55,7 @@ const MovieCard = ({ title, poster_path, overview, vote_average, id }) => {
         <h2>Overview</h2>
         <p>{overview}</p>
         {recommendMovie(vote_average) && (
-          <p className="text-red-500 border border-black p-2 font-bold bg-black">{recommendMovie(vote_average)}</p>
+          <p className="text-red-500 p-2 font-bold bg-gray-700 pulse flex items-center justify-center">{recommendMovie(vote_average)}</p>
         )}
       </div>
     </div>
