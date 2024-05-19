@@ -3,21 +3,19 @@ import { Link, NavLink } from "react-router-dom";
 import avatar from "../assets/icons/avatar.png";
 import moviepicks from "../assets/icons/moviepicks.jpg";
 import { AuthContext } from "../context/AuthContext";
-import Switch from "./Switch"; 
 
 const hover="hover:text-subMain transitions text-white";
 const Hover= ({isActive}) => (isActive? 'text-subMain': hover);
 
 const Navbar = () => {
   const { currentUser, logOut } = useContext(AuthContext);
-  // const currentUser = { displayName: "felix franko" };
-  // const currentUser = false;
+
   return (
     <div>
       <nav
           className="flex w-full flex-wrap items-center justify-between py-3 shadow-lg lg:flex-wrap lg:justify-start fixed top-0 z-20"
           style={{
-            backgroundImage: "linear-gradient(to right, #9b1d20, #662d8c, #e67071)", // Gradient deosebit cu nuanțe de visiniu și mov
+            backgroundImage: "linear-gradient(to right, #9b1d20, #662d8c, #e67071)", 
             color: "dark.text-neutral-200"
           }}
           data-te-navbar-ref=""
@@ -37,7 +35,7 @@ const Navbar = () => {
             {currentUser && (
               <h5 className="mr-2 capitalize">{currentUser.displayName}</h5>
             )}
-            <Switch />
+       
             <div className="relative" data-te-dropdown-ref="">
               <span
                 className="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
