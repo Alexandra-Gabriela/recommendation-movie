@@ -6,6 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 import "tw-elements";
 import { BrowserRouter } from "react-router-dom";
 
+document.documentElement.classList.add('dark');
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
