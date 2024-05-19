@@ -27,13 +27,13 @@ const Main = () => {
   return (
     <>
       <form className="flex justify-center p-2 pad-50" onSubmit={handleSubmit}>
-        <input
+      <input
           type="search"
-          className="w-600 h-8 p-1 m-2"
-          placeholder="Search a movie..."
+          className="w-full md:w-96 h-12 px-4 rounded-full border-2 border-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 mt-4"
+          placeholder="Search for a movie..."
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button className="btn-danger-bordered rounded-full" type="submit">
+        <button className="ml-4 px-8 py-3 bg-red-500 text-white rounded-full shadow-md hover:bg-red-600 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-500 mt-4">
           Search
         </button>
       </form>
