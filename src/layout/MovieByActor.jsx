@@ -33,7 +33,9 @@ const MovieByActor = ({ movies, loading, currentUser }) => {
                 </div>
             )}
             {!loading && movies.length === 0 && (
-                <p className="text-gray-500">No movies found. Please enter a valid actor name.</p>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <p className="text-gray-500 text-center">No movies found. Please enter a valid actor name.</p>
+        </div>
             )}
             {!loading && movies.map((movie) => {
                 const recommendation = recommendMovie(movie.vote_average);

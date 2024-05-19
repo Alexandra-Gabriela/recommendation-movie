@@ -10,12 +10,12 @@ return (
         <div className="footer-section mb-4 sm:mb-0 w-full sm:w-auto">
             <div className="mb-4 relative">
         <p className="text-lg font-bold relative inline-block">
-            <span className="bg-gradient-to-r from-red-700 via-red-500 to-red-700 bg-clip-text text-transparent">Useful Links</span>
+            <span className="bg-gradient-to-r from-red-700 via-red-500 to-red-700 bg-clip-text text-transparent ml-10 text-xl">Useful Links</span>
         </p>
         </div>
             <ul>
-                <li><Link to="/aboutUs" className="text-gray-600 hover:text-gray-300">About Us</Link></li>
-                <li><Link to="/generate" className="text-gray-600 hover:text-gray-300">Generate movie</Link></li>
+                <li><Link to="/aboutUs" className="text-gray-600 hover:text-gray-300 ml-10 text-xl">About Us</Link></li>
+                <li><Link to="/search" className="text-gray-600 hover:text-gray-300 ml-10 text-xl">Search by Actor</Link></li>
             </ul>
             </div>
     {/* Coloana dreaptă pentru About Us și Contact */}
@@ -25,7 +25,7 @@ return (
                 <p className="text-lg font-bold relative inline-block">
                 <span className="bg-gradient-to-r from-red-700 via-red-500 to-red-700 bg-clip-text text-transparent">About Us</span>
             </p>
-                <p className="text-sm mt-2 text-gray-600">A passionate team of movie enthusiasts dedicated to providing the best recommendations.</p>
+                <p className="text-sm mt-2 text-gray-600 mr-10">A passionate team of movie enthusiasts dedicated to providing the best recommendations.</p>
             </div>
             <div className="mb-4 relative">
                 <p className="text-lg font-bold relative inline-block">
@@ -37,8 +37,8 @@ return (
     </div>
 </div>
   {/* Copyright */}
-    <div className="text-center text-sm mt-4 text-gray-400">
-        &copy; {new Date().getFullYear()} Your Website. All rights reserved.
+    <div className="text-center text-sm mt-4 text-gray-400 mt-10">
+        &copy; {new Date().getFullYear()} MoviePicks. All rights reserved.
     </div>
 </footer>
 

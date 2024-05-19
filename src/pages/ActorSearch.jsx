@@ -47,8 +47,8 @@ const ActorSearch = () => {
             <form className="flex justify-center p-2 pad-50" onSubmit={handleSearch}>
                 <input
                     type="search"
-                    className="w-600 h-8 p-1 m-2 border-b-2 border-gray-300 outline-none"
-                    placeholder="Search an actor..."
+                    className="w-600 h-8 p-1 m-2 border-b-2 border-gray-300 outline-none rounded-full placeholder-gray-500 focus:ring-2 focus:ring-gray-300 hover:ring-2 hover:ring-gray-300"
+                    placeholder="Enter actor name..."
                     value={actorName}
                     onChange={(e) => setActorName(e.target.value)}
                 />
