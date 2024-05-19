@@ -37,7 +37,7 @@ return (
     </div>
 </div>
   {/* Copyright */}
-    <div className="text-center text-sm mt-4 text-gray-400 mt-10">
+    <div className="text-center text-sm mt-4 text-gray-400">
         &copy; {new Date().getFullYear()} MoviePicks. All rights reserved.
     </div>
 </footer>

@@ -52,7 +52,7 @@ const MovieDetail = () => {
               <h5 className="text-gray-900 text-3xl font-medium mb-2 text-center mt-3">
                 Overview
               </h5>
-              <p className="text-3xl text-gray-700 text-base mb-4 text-center mt-4">{overview}</p>
+              <p className="text-3xl text-gray-700 mb-4 text-center mt-4">{overview}</p>
             </div>
             <ul className="bg-gray-100 rounded-lg border border-gray-400 text-gray-900">
               <li className="px-6 py-2 border-b border-gray-400 w-full rounded-t-lg text-center">
