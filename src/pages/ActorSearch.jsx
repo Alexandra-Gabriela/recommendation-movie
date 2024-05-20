@@ -1,7 +1,7 @@
 // src/components/ActorSearch.js
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import axios from 'axios';
+import axios from 'axios'; // Importă biblioteca axios pentru a efectua cereri HTTP
 import MovieByActor from '../layout/MovieByActor';
 
 const API_KEY = '62ffac58c57333a136053150eaa1b587';
@@ -13,6 +13,7 @@ const ActorSearch = () => {
     const [error, setError] = useState(null);
     const { currentUser } = useContext(AuthContext);
 
+    // Funcția pentru a căuta filmele după un actor folosind API-ul
     const fetchActorMovies = async (actorName) => {
         setLoading(true);
         setError(null);
@@ -34,6 +35,7 @@ const ActorSearch = () => {
         }
     };
 
+    // Funcție pentru gestionarea căutării
     const handleSearch = async (event) => {
         event.preventDefault();
         setLoading(true);
@@ -42,6 +44,7 @@ const ActorSearch = () => {
         setLoading(false);
     };
 
+    // Returnează JSX-ul pentru a afișa formularul de căutare și rezultatele căutării
     return (
         <div className="flex flex-col items-center min-h-screen pt-10">
             <form className="flex justify-center p-2 pad-50" onSubmit={handleSearch}>

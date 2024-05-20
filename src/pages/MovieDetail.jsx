@@ -24,6 +24,7 @@ const MovieDetail = () => {
   const videoUrl = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`;
 
   useEffect(() => {
+    // Cerere GET către API-ul TMDB pentru a obține detaliile filmului
     axios
       .get(movieDetailBaseUrl)
       .then((res) => setMovieDetails(res.data))

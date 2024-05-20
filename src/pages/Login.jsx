@@ -8,6 +8,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const { signIn, signUpProvider, forgotPassword } = useContext(AuthContext);
 
+  //Eveniment pentru formularul de Login
   const handleSubmit = (e) => {
     e.preventDefault();
     signIn(email, password);

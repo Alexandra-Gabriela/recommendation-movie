@@ -41,7 +41,7 @@ body {
   padding: 50px;
 }
 
-/* MovieCard Custom CSS */
+/* MovieCard personalizat CSS */
 .movie {
   background-color: #c97cd88f;
   border-radius: 3px;
@@ -87,7 +87,7 @@ body {
   min-height: 600px;
 }
 
-/* Login Custom CSS */
+/* Login personalizat CSS */
 
 .custom-linear-gradient::before {
   transform-origin: bottom right;

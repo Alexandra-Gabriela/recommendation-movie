@@ -14,6 +14,7 @@ const Main = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
+  // Funcția care gestionează trimiterea formularului pentru căutarea de filme
   const handleSubmit = (e) => {
     e.preventDefault();
     if (currentUser && searchTerm) {
@@ -28,6 +29,7 @@ const Main = () => {
 
   return (
     <>
+     {/* Formularul pentru căutarea de filme */}
       <form className="flex justify-center p-2 pad-50" onSubmit={handleSubmit}>
         <input
           type="search"
@@ -35,10 +37,12 @@ const Main = () => {
           placeholder="Search for a movie..."
           onChange={(e) => setSearchTerm(e.target.value)}
         />
+        {/* Butonul de căutare */}
         <button className="btn-danger-bordered rounded-full" type="submit" disabled={loading}>
           {loading ? 'Searching...' : 'Search'}
         </button>
       </form>
+       {/* Secțiunea pentru afișarea rezultatelor căutării */}
       <div className="flex justify-center flex-wrap">
         {loading ? (
           <div

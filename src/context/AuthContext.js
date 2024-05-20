@@ -1,108 +1,95 @@
 import {
   createUserWithEmailAndPassword,
-  GoogleAuthProvider,
+  GoogleAuthProvider, // Obiect provider pentru autentificare Google
   onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
-  signInWithPopup,
+  signInWithPopup, // Funcție pentru autentificare cu un popup (ex. autentificare Google)
   signOut,
-  updateProfile,
+  updateProfile, 
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../auth/firebase";
 import {
+  // Funcții pt a afișa notificări de eroare, succes, avertizare
   toastErrorNotify,
   toastSuccessNotify,
   toastWarnNotify,
 } from "../helpers/ToastNotify";
 
-// export const {Provider} = createContext()
+// Crează un context pentru autentificare
 export const AuthContext = createContext();
-//* with custom hook
-// export const useAuthContext = () => {
-//     return useContext(AuthContext);
-//   };
 
 const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
-    JSON.parse(sessionStorage.getItem("user")) || false
+    JSON.parse(sessionStorage.getItem("user")) || false // Preia utilizatorul curent din session storage
   );
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Hook pentru a naviga între rute
 
   useEffect(() => {
-    userObserver();
+    userObserver(); // Începe să observe schimbările de stare ale utilizatorului
   }, []);
 
   const createUser = async (email, password, displayName) => {
     try {
-      //? yeni bir kullanıcı oluşturmak için kullanılan firebase metodu
+      // Creează un utilizator nou cu email și parolă
       let userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      //? kullanıcı profilini güncellemek için kullanılan firebase metodu
+  
       await updateProfile(auth.currentUser, {
         displayName: displayName,
       });
-      navigate("/");
-      toastSuccessNotify("Registered successfully!");
+      navigate("/"); 
+      toastSuccessNotify("Înregistrare reușită!"); 
     } catch (error) {
-      toastErrorNotify(error.message);
+      toastErrorNotify(error.message); 
     }
   };
 
-  //* https://console.firebase.google.com/
-  //* => Authentication => sign-in-method => enable Email/password
-  //! Email/password ile girişi enable yap
   const signIn = async (email, password) => {
-    //? mevcut kullanıcının giriş yapması için kullanılan firebase metodu
+    // Autentifică un utilizator existent cu email și parolă
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/");
-      toastSuccessNotify("Logged in successfully!");
+      navigate("/"); 
+      toastSuccessNotify("Autentificare reușită!");
     } catch (error) {
-      toastErrorNotify(error.message);
+      toastErrorNotify(error.message); 
     }
   };
 
   const logOut = () => {
-    signOut(auth);
+    signOut(auth); // Deconectează utilizatorul curent
   };
 
   const userObserver = () => {
-    //? Kullanıcının signin olup olmadığını takip eden ve kullanıcı değiştiğinde yeni kullanıcıyı response olarak dönen firebase metodu
+    // Observă schimbările de stare ale utilizatorului
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        // Dacă utilizatorul este conectat
         const { email, displayName, photoURL } = user;
-        setCurrentUser({ email, displayName, photoURL });
+        setCurrentUser({ email, displayName, photoURL }); // Setează utilizatorul curent
         sessionStorage.setItem(
           "user",
-          JSON.stringify({ email, displayName, photoURL })
+          JSON.stringify({ email, displayName, photoURL }) // Stochează informațiile utilizatorului în session storage
         );
       } else {
-        setCurrentUser(false);
-        sessionStorage.clear();
-        // console.log("logged out");
+        setCurrentUser(false); 
+        sessionStorage.clear(); 
       }
     });
   };
 
-  //* https://console.firebase.google.com/
-  //* => Authentication => sign-in-method => enable Google
-  //! Google ile girişi enable yap
-  //* => Authentication => settings => Authorized domains => add domain
-  //! Projeyi deploy ettikten sonra google sign-in çalışması için domain listesine deploy linkini ekle
   const signUpProvider = () => {
-    //? Google ile giriş yapılması için kullanılan firebase metodu
-    const provider = new GoogleAuthProvider();
-    //? Açılır pencere ile giriş yapılması için kullanılan firebase metodu
+    const provider = new GoogleAuthProvider(); // Creează un obiect provider pentru autentificare Google
     signInWithPopup(auth, provider)
       .then((result) => {
         console.log(result);
-        navigate("/");
-        toastSuccessNotify("Logged in successfully!");
+        navigate("/"); 
+        toastSuccessNotify("Autentificare reușită!"); 
       })
       .catch((error) => {
         console.log(error);
@@ -110,17 +97,13 @@ const AuthContextProvider = ({ children }) => {
   };
 
   const forgotPassword = (email) => {
-    //? Email yoluyla şifre sıfırlama için kullanılan firebase metodu
     sendPasswordResetEmail(auth, email)
       .then(() => {
-        // Password reset email sent!
-        toastWarnNotify("Please check your mail box!");
-        // alert("Please check your mail box!");
+        // Trimite un email de resetare a parolei
+        toastWarnNotify("Verifică căsuța de email!"); 
       })
       .catch((err) => {
         toastErrorNotify(err.message);
-        // alert(err.message);
-        // ..
       });
   };
   const values = {
@@ -131,7 +114,7 @@ const AuthContextProvider = ({ children }) => {
     forgotPassword,
     currentUser,
   };
-  return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>; // Oferă contextul de autentificare componentelor copil
 };
 
 export default AuthContextProvider;

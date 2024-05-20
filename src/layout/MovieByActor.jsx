@@ -4,17 +4,19 @@ import React from 'react';
 const IMG_API = "https://image.tmdb.org/t/p/w1280";
 const defaultImage = "https://images.unsplash.com/photo-1581905764498-f1b60bae941a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80";
 
+// Funcție pentru a determina clasa de stil bazată pe scorul filmului
 const MovieByActor = ({ movies, loading, currentUser }) => {
     const getVoteClass = (vote) => {
         if (vote >= 8) {
             return "text-green-500";
-        } else if (vote >= 6) {
+        } else if (vote >= 5) {
             return "text-orange-500";
         } else {
             return "text-red-500";
         }
     };
 
+// Funcție pentru a oferi recomandări bazate pe scorul filmului
     const recommendMovie = (vote_average) => {
         if (vote_average >= 8) {
             return "Watch this movie now!";
@@ -25,6 +27,7 @@ const MovieByActor = ({ movies, loading, currentUser }) => {
         }
     };
 
+// Returnează JSX pentru a afișa filmele într-o grilă 
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-4">
             {loading && (

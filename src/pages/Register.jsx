@@ -3,12 +3,14 @@ import GoogleIcon from "../assets/icons/GoogleIcon";
 import { AuthContext } from "../context/AuthContext";
 
 const Register = () => {
+  // State-uri pentru stocarea informațiilor introduse de utilizator
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { createUser, signUpProvider } = useContext(AuthContext);
 
+  // Funcția care se ocupă de acțiunea de submit a formularului de înregistrare
   const handleSubmit = (e) => {
     e.preventDefault();
     const displayName = `${firstName} ${lastName}`;
@@ -18,10 +20,12 @@ const Register = () => {
   return (
     <div className="overflow-hidden flex-1 h-screen justify-center items-center bg-[#23242a]">
       <div className="form-container mt-[5vh] w-[380px] h-[580px] bg-[#2c2f33] p-8 rounded-lg shadow-lg">
+         {/* Formularul de înregistrare */}
         <form onSubmit={handleSubmit}>
           <h2 className="text-2xl font-[500] text-center tracking-[0.1em] mb-3" style={{ background: 'linear-gradient(to right, #9b1d20, #662d8c, #e67071)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
             Sign Up
           </h2>
+          {/* Câmpuri pentru introducerea numelui și prenumelui */}
           <div className="relative z-0 w-full mb-6 group">
             <input
               type="text"
@@ -31,6 +35,7 @@ const Register = () => {
               required
               onChange={(e) => setFirstName(e.target.value)}
             />
+            {/* Eticheta pentru nume */}
             <label
               htmlFor="floating_text"
               className="absolute text-lg text-[#662d8c] duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#e67071] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
@@ -38,6 +43,7 @@ const Register = () => {
               First Name
             </label>
           </div>
+          {/* Câmp pentru introducerea prenumelui */}
           <div className="relative z-0 w-full mb-6 group">
             <input
               name="floating_text"

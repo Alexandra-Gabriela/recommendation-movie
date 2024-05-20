@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+// react-toastify - bibliotecă care facilitează afișarea notificărilor
 
 export const toastWarnNotify = (msg) => {
   toast.warn(msg, {
