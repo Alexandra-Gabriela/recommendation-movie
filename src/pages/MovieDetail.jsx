@@ -34,6 +34,7 @@ const MovieDetail = () => {
     };
       const recommendation = recommendMovie(vote_average);
   useEffect(() => {
+    // Cerere GET către API-ul TMDB pentru a obține detaliile filmului
     axios
       .get(movieDetailBaseUrl)
       .then((res) => setMovieDetails(res.data))

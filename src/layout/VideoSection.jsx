@@ -1,6 +1,7 @@
 import React from "react";
 
 const VideoSection = ({ videoKey }) => {
+  // Returnează JSX-ul pentru a afișa un videoclip YouTube
   return (
     <div className="w-10/12 md:w-3/5 mx-auto my-3">
       <div
