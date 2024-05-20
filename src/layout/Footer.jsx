@@ -10,7 +10,7 @@ return (
         <div className="footer-section mb-4 sm:mb-0 w-full sm:w-auto">
             <div className="mb-4 relative">
         <p className="text-lg font-bold relative inline-block">
-            <span className="text-2xl font-bold bg-gradient-to-r from-[#9b1d20] via-[#662d8c] to-[#e67071] bg-clip-text text-transparent animate-moveGradient mb-4 ml-10 text-xl">Useful Links</span>
+            <span className="text-2xl font-bold bg-gradient-to-r from-[#9b1d20] via-[#662d8c] to-[#e67071] bg-clip-text text-transparent animate-moveGradient mb-4 ml-10">Useful Links</span>
         </p>
         </div>
             <ul>
