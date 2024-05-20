@@ -8,7 +8,7 @@ const MovieByActor = ({ movies, loading, currentUser }) => {
     const getVoteClass = (vote) => {
         if (vote >= 8) {
             return "text-green-500";
-        } else if (vote >= 6) {
+        } else if (vote >= 5) {
             return "text-orange-500";
         } else {
             return "text-red-500";
