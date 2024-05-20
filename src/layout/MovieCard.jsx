@@ -31,6 +31,7 @@ const MovieCard = ({ title, poster_path, overview, vote_average, id }) => {
   };
 
   return (
+<<<<<<< HEAD
     <div className="movie relative max-w-xs w-full mx-auto rounded overflow-hidden shadow-lg bg-white" onClick={() => navigate("/details/" + id)}>
       <img loading="lazy" src={poster_path ? IMG_API + poster_path : defaultImage} alt="movie-card" />
       <div className="absolute inset-0 flex flex-col justify-center items-center text-white bg-black bg-opacity-75 opacity-0 transition-opacity duration-300 hover:opacity-100 overflow-y-auto p-4">
@@ -43,9 +44,34 @@ const MovieCard = ({ title, poster_path, overview, vote_average, id }) => {
       <div className="ml-3 p-1 flex justify-between items-center text-white">
         <h5>{title}</h5>
         {currentUser && (
+=======
+    <div
+      className="movie"
+      id="container"
+      onClick={() => navigate("/details/" + id)}
+    >
+      <img
+        loading="lazy"
+        src={poster_path ? IMG_API + poster_path : defaultImage}
+        alt="movie-card"
+        />
+    <div className="flex items-center justify-between text-left p-1 text-white">
+      <h5>{title}</h5>
+      {currentUser && (
+>>>>>>> a2bc4f26446e56e2d13c5d174b731fbeace2c9ff
           <span className={`tag ${getVoteClass(vote_average)}`}>
-            {vote_average.toFixed(1)}
+              {vote_average.toFixed(1)}
           </span>
+<<<<<<< HEAD
+=======
+      )}
+  </div>
+      <div className="absolute inset-0 flex flex-col justify-center items-center text-white bg-black bg-opacity-75 opacity-0 transition-opacity duration-300 hover:opacity-100 overflow-y-auto p-4">
+        <h2>Overview</h2>
+        <p>{overview}</p>
+        {recommendMovie(vote_average) && (
+          <p className="text-red-500 p-2 font-bold bg-gray-700 pulse flex items-center justify-center">{recommendMovie(vote_average)}</p>
+>>>>>>> a2bc4f26446e56e2d13c5d174b731fbeace2c9ff
         )}
       </div>
     </div>

@@ -23,6 +23,16 @@ const MovieDetail = () => {
     "https://images.unsplash.com/photo-1581905764498-f1b60bae941a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80";
   const videoUrl = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`;
 
+    const recommendMovie = (vote_average) => {
+        if (vote_average >= 8) {
+            return "Watch this movie now!";
+        } else if (vote_average <= 5) {
+            return "Avoid this movie at all costs!";
+        } else {
+            return "The movie is passable";
+        }
+    };
+      const recommendation = recommendMovie(vote_average);
   useEffect(() => {
     // Cerere GET către API-ul TMDB pentru a obține detaliile filmului
     axios
@@ -53,19 +63,26 @@ const MovieDetail = () => {
               <h5 className="text-gray-900 text-3xl font-medium mb-2 text-center mt-3">
                 Overview
               </h5>
-              <p className="text-3xl text-gray-700 mb-4 text-center mt-4">{overview}</p>
+              <p className="text-1xl text-gray-700 mb-4 text-center mt-4">{overview}</p>
             </div>
             <ul className="bg-gray-100 rounded-lg border border-gray-400 text-gray-900">
-              <li className="px-6 py-2 border-b border-gray-400 w-full rounded-t-lg text-center">
+              <li className="px-6 py-2 border-b border-gray-400 w-full rounded-t-lg">
                 <strong>Release Date:</strong> {release_date}
               </li>
-              <li className="px-6 py-2 border-b border-gray-400 w-full text-center">
+              <li className="px-6 py-2 border-b border-gray-400 w-full ">
                 <strong>Rate:</strong> {vote_average}
               </li>
-              <li className="px-6 py-2 border-b border-gray-400 w-full text-center">
+              <li className="px-6 py-2 border-b border-gray-400 w-full ">
                 <strong>Total Vote:</strong> {vote_count}
               </li>
-              <li className="px-6 py-2 border-gray-400 w-full rounded-t-lg text-center">
+              <li className="px-6 py-2 border-b border-gray-400 w-full">
+                  {recommendation && (  
+                                <p className="text-red-700 font-bold"> <strong className="text-gray-900"> Recommendation: </strong>
+                                    {recommendation}
+                                </p>
+                            )}
+              </li>
+              <li className="px-6 py-2 border-gray-400 w-full rounded-t-lg">
                 <Link
                   to={-1}
                   className="text-blue-600 hover:text-blue-700 transition duration-300 ease-in-out mb-4 text-center"
