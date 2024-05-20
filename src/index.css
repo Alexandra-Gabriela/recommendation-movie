@@ -90,7 +90,6 @@ body {
 /* Login Custom CSS */
 
 .custom-linear-gradient::before {
-  background: linear-gradient(0deg, transparent, #ff4b45);
   transform-origin: bottom right;
   animation: animate 6s linear infinite;
 }

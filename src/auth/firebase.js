@@ -12,7 +12,7 @@ const firebaseConfig = {
     storageBucket: "cosmina-119b5.appspot.com",
     messagingSenderId: "91507145123",
     appId: "1:91507145123:web:d1c5bb9f0f1d463b96c216"
- 
+
 };
 
 // Initialize Firebase

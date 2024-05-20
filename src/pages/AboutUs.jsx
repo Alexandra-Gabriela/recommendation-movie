@@ -13,7 +13,7 @@ return (
         </p>
     </div>
     <div className="mt-8">
-        <h3 className="text-2xl font-bold bg-gradient-to-r from-red-700 via-red-500 to-red-700 bg-clip-text text-transparent animate-moveGradient mb-4">Why Choose MoviePicks?</h3>
+        <h3 className="text-2xl font-bold bg-gradient-to-r from-[#9b1d20] via-[#662d8c] to-[#e67071] bg-clip-text text-transparent animate-moveGradient mb-4">Why Choose MoviePicks?</h3>
         <ul className="text-gray-500 list-disc pl-6">
         <li className="mb-2">Curated selection of movies across genres</li>
         <li className="mb-2">Personalized recommendations based on your preferences</li>
