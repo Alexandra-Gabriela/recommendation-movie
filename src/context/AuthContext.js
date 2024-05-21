@@ -1,36 +1,42 @@
+// Importă funcții de autentificare din Firebase Auth
 import {
   createUserWithEmailAndPassword,
-  GoogleAuthProvider, // Obiect provider pentru autentificare Google
+  GoogleAuthProvider,
   onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
-  signInWithPopup, // Funcție pentru autentificare cu un popup (ex. autentificare Google)
+  signInWithPopup,
   signOut,
   updateProfile, 
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
+// Importă hook-ul pentru navigare între rute
 import { useNavigate } from "react-router-dom";
+// Importă obiectul auth din configurarea Firebase
 import { auth } from "../auth/firebase";
+// Importă funcții pentru a afișa notificări
 import {
-  // Funcții pt a afișa notificări de eroare, succes, avertizare
   toastErrorNotify,
   toastSuccessNotify,
   toastWarnNotify,
 } from "../helpers/ToastNotify";
 
-// Crează un context pentru autentificare
+// Creează un context pentru autentificare
 export const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
+  // Creează o stare pentru utilizatorul curent, preluat din session storage
   const [currentUser, setCurrentUser] = useState(
-    JSON.parse(sessionStorage.getItem("user")) || false // Preia utilizatorul curent din session storage
+    JSON.parse(sessionStorage.getItem("user")) || false //daca e logat sau nu
   );
-  const navigate = useNavigate(); // Hook pentru a naviga între rute
+  const navigate = useNavigate(); // Hook pentru navigare între rute
 
   useEffect(() => {
-    userObserver(); // Începe să observe schimbările de stare ale utilizatorului
+    // Observă schimbările de stare ale utilizatorului cand se logheaza si se delogheaza
+    userObserver();
   }, []);
 
+  //async pentru sincronizare - utilizeaza promise si wait
   const createUser = async (email, password, displayName) => {
     try {
       // Creează un utilizator nou cu email și parolă
@@ -40,13 +46,14 @@ const AuthContextProvider = ({ children }) => {
         password
       );
   
+      // Actualizează profilul utilizatorului curent cu un displayName
       await updateProfile(auth.currentUser, {
         displayName: displayName,
       });
-      navigate("/"); 
-      toastSuccessNotify("Înregistrare reușită!"); 
+      navigate("/"); // Navighează la ruta principală
+      toastSuccessNotify("Înregistrare reușită!"); // Notificare de succes
     } catch (error) {
-      toastErrorNotify(error.message); 
+      toastErrorNotify(error.message); // Notificare de eroare
     }
   };
 
@@ -54,15 +61,16 @@ const AuthContextProvider = ({ children }) => {
     // Autentifică un utilizator existent cu email și parolă
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/"); 
-      toastSuccessNotify("Autentificare reușită!");
+      navigate("/"); // Navighează la ruta principală
+      toastSuccessNotify("Autentificare reușită!"); // Notificare de succes
     } catch (error) {
-      toastErrorNotify(error.message); 
+      toastErrorNotify(error.message); // Notificare de eroare
     }
   };
 
   const logOut = () => {
-    signOut(auth); // Deconectează utilizatorul curent
+    // Deconectează utilizatorul curent
+    signOut(auth);
   };
 
   const userObserver = () => {
@@ -71,25 +79,31 @@ const AuthContextProvider = ({ children }) => {
       if (user) {
         // Dacă utilizatorul este conectat
         const { email, displayName, photoURL } = user;
-        setCurrentUser({ email, displayName, photoURL }); // Setează utilizatorul curent
+        // Setează utilizatorul curent
+        setCurrentUser({ email, displayName, photoURL }); 
+        // Stochează informațiile utilizatorului în session storage
         sessionStorage.setItem(
           "user",
-          JSON.stringify({ email, displayName, photoURL }) // Stochează informațiile utilizatorului în session storage
+          //converteste un obiect JS in siruri de caractere JSON, pt stocarea unui obiect 
+          JSON.stringify({ email, displayName, photoURL }) 
         );
       } else {
+        // Dacă utilizatorul nu este conectat
         setCurrentUser(false); 
-        sessionStorage.clear(); 
+        sessionStorage.clear(); // Șterge session storage
       }
     });
   };
 
   const signUpProvider = () => {
-    const provider = new GoogleAuthProvider(); // Creează un obiect provider pentru autentificare Google
+    // Creează un obiect provider pentru autentificare Google
+    const provider = new GoogleAuthProvider(); 
+    // Autentifică utilizatorul cu un popup (Google)
     signInWithPopup(auth, provider)
       .then((result) => {
         console.log(result);
-        navigate("/"); 
-        toastSuccessNotify("Autentificare reușită!"); 
+        navigate("/"); // Navighează la ruta principală
+        toastSuccessNotify("Autentificare reușită!"); // Notificare de succes
       })
       .catch((error) => {
         console.log(error);
@@ -97,15 +111,17 @@ const AuthContextProvider = ({ children }) => {
   };
 
   const forgotPassword = (email) => {
+    // Trimite un email de resetare a parolei
     sendPasswordResetEmail(auth, email)
       .then(() => {
-        // Trimite un email de resetare a parolei
-        toastWarnNotify("Verifică căsuța de email!"); 
+        toastWarnNotify("Verifică căsuța de email!"); // Notificare de avertizare
       })
       .catch((err) => {
-        toastErrorNotify(err.message);
+        toastErrorNotify(err.message); // Notificare de eroare
       });
   };
+
+  // Valori și funcții expuse în context
   const values = {
     createUser,
     signIn,
@@ -114,7 +130,9 @@ const AuthContextProvider = ({ children }) => {
     forgotPassword,
     currentUser,
   };
-  return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>; // Oferă contextul de autentificare componentelor copil
+
+  // Returnează contextul de autentificare pentru a fi utilizat de componentele copil
+  return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
 
 export default AuthContextProvider;

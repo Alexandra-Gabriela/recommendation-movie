@@ -29,9 +29,10 @@ const Navbar = () => {
             <NavLink to="/search" className={`${Hover} mr-4`}>Search by Actor</NavLink>
             <NavLink to="/aboutus" className={`${Hover} mr-4`}>About Us</NavLink>
             {currentUser && (
+              //pt iconita de autentificare si iti apare displayName
               <h5 className="mr-2 capitalize text-white">{currentUser.displayName}</h5>
             )}
-    
+            // drop pt autentificare
             <div className="relative" data-te-dropdown-ref="">
               <span
                 className="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"

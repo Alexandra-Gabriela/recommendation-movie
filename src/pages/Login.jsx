@@ -1,26 +1,27 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
-import GoogleIcon from "../assets/icons/GoogleIcon";
-import { AuthContext } from "../context/AuthContext";
+import React, { useContext, useState } from "react"; 
+import { Link } from "react-router-dom"; 
+import GoogleIcon from "../assets/icons/GoogleIcon"; 
+import { AuthContext } from "../context/AuthContext"; 
 
-const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { signIn, signUpProvider, forgotPassword } = useContext(AuthContext);
+const Login = () => { // Definirea componentei Login
+  const [email, setEmail] = useState(""); // Starea pentru emailul introdus în formularul de autentificare
+  const [password, setPassword] = useState(""); // Starea pentru parola introdusă în formularul de autentificare
+  const { signIn, signUpProvider, forgotPassword } = useContext(AuthContext); // Extrage funcțiile necesare pentru autentificare din contextul de autentificare
 
-  //Eveniment pentru formularul de Login
+  // Eveniment pentru formularul de Login
   const handleSubmit = (e) => {
-    e.preventDefault();
-    signIn(email, password);
+    e.preventDefault(); // Oprirea comportamentului implicit al formularului de trimis date
+    signIn(email, password); // Apelarea funcției signIn pentru autentificarea utilizatorului
   };
 
   return (
-    <div className="overflow-hidden flex-1 h-screen justify-center items-center bg-[#23242a]">
-      <div className="form-container mt-[10vh] w-[380px] h-[500px] bg-[#2c2f33] p-8 rounded-lg shadow-lg">
-        <form onSubmit={handleSubmit}>
-          <h2 className="text-2xl font-[500] text-center tracking-[0.1em] mb-3" style={{ background: 'linear-gradient(to right, #9b1d20, #662d8c, #e67071)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+    <div className="overflow-hidden flex-1 h-screen justify-center items-center bg-[#23242a]"> {/* Div principal pentru întreaga pagină de autentificare */}
+      <div className="form-container mt-[10vh] w-[380px] h-[500px] bg-[#2c2f33] p-8 rounded-lg shadow-lg"> {/* Container pentru formularul de autentificare */}
+        <form onSubmit={handleSubmit}> {/* Formularul de autentificare */}
+          <h2 className="text-2xl font-[500] text-center tracking-[0.1em] mb-3" style={{ background: 'linear-gradient(to right, #9b1d20, #662d8c, #e67071)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}> {/* Titlul formularului de autentificare */}
             Sign In
           </h2>
+          {/* Câmpurile pentru introducerea emailului și a parolei */}
           <div className="relative z-0 w-full mb-6 group">
             <input
               name="floating_email"
@@ -53,6 +54,7 @@ const Login = () => {
               Password
             </label>
           </div>
+          {/* Link către pagina de recuperare a parolei și către pagina de înregistrare */}
           <div className="flex justify-between text-sm">
             <span
               onClick={() => forgotPassword(email)}
@@ -67,9 +69,11 @@ const Login = () => {
               Sign Up
             </Link>
           </div>
+          {/* Buton pentru autentificare */}
           <button className="w-full py-3 mt-4 bg-gradient-to-r from-[#9b1d20] via-[#662d8c] to-[#e67071] text-white rounded-lg shadow-md hover:from-[#662d8c] hover:to-[#9b1d20] transition-colors duration-300" type="submit">
             Login
           </button>
+          {/* Buton pentru autentificare cu Google */}
           <button
             className="w-full py-3 mt-4 flex justify-center items-center bg-gradient-to-r from-[#9b1d20] via-[#662d8c] to-[#e67071] text-white rounded-lg shadow-md hover:from-[#662d8c] hover:to-[#9b1d20] transition-colors duration-300"
             type="button"
@@ -84,4 +88,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Login; // Exportă componenta Login pentru a putea fi utilizată în alte părți ale aplicației

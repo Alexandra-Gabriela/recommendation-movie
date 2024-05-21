@@ -7,8 +7,8 @@ const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?api_key=${API_
 
 const MovieContextProvider = ({ children }) => {
   // Starea pentru lista de filme și încărcare
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [movies, setMovies] = useState([]); //array gol filme
+  const [loading, setLoading] = useState(false); //pt a actualiza starea
   useEffect(() => {
     getMovies(FEATURED_API);
   }, []);
@@ -19,10 +19,11 @@ const MovieContextProvider = ({ children }) => {
       .get(API) // Cerere GET către API
       .then((res) => setMovies(res.data.results))
       .catch((err) => console.log(err))
-      .finally(() => setLoading(false));
+      .finally(() => setLoading(false)); //loading-ul pe false ca sa nu caute
   };
   const values = { movies, getMovies, loading };
   return (
+    //furnizeaza contextul
     <MovieContext.Provider value={values}>{children}</MovieContext.Provider>
   );
 };

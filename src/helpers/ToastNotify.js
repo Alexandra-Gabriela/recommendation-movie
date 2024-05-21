@@ -8,6 +8,7 @@ export const toastWarnNotify = (msg) => {
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
+    //bara de progres gestionata automat de biblioteca
     progress: undefined,
   });
 };
